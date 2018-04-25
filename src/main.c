@@ -512,6 +512,10 @@ int main(int argc, char **argv)
 			refresh_status = 1;
 			info_frame_init();
 			fi.loop_count = 0;
+
+			gettimeofday(&tv, &tz);
+			long long int start = (long long int)(tv.tv_sec) * 1000 + (long long int)(tv.tv_usec) / 1000;
+			int time_alsa_delay = 0;
     play_sequence:
 			while (!opt.info && xmp_play_frame(xc) == 0) {
 				int old_loop = fi.loop_count;
@@ -520,6 +524,19 @@ int main(int argc, char **argv)
 				control.mixer_type = xmp_get_player(
 						xc, XMP_PLAYER_MIXER_TYPE);
 
+				control.time += 1.0 * fi.frame_time / 1000;
+
+				if (sound->get_delay) {
+					time_alsa_delay = sound->get_delay();
+				}
+				
+				/* output detailed playback info for sync */
+				gettimeofday(&tv, &tz);
+				long long int now = (long long int)(tv.tv_sec) * 1000 + (long long int)(tv.tv_usec) / 1000;
+				fprintf(stdout, "{\"row\":%d,\"num_rows\":%d,\"pos\":%d,\"frame\":%d,\"bpm\":%d,\"speed\":%d,\"time_a\":%g,\"time_a_track\":%d,\"time_alsa\":%lld,\"time_alsa_delay\":%d,\"time_hw\":%lld}\n",
+						fi.row, fi.num_rows, fi.pos, fi.frame, fi.bpm, fi.speed, control.time, fi.time, (int)control.time + start, 1000 * time_alsa_delay / 44100, now);
+				fflush(stdout);
+				
 				/* Check loop */
 
 				if (old_loop != fi.loop_count) {
@@ -539,8 +556,6 @@ int main(int argc, char **argv)
 					info_frame(&mi, &fi, &control, refresh_status);
 					refresh_status = 0;
 				}
-
-				control.time += 1.0 * fi.frame_time / 1000;
 
 				sound->play(fi.buffer, fi.buffer_size);
 

@@ -278,5 +278,6 @@ struct sound_driver sound_coreaudio = {
 	play,
 	flush,
 	onpause,
-	onresume
+	onresume,
+	NULL
 };

@@ -181,6 +181,7 @@ struct sound_driver sound_win32 = {
 	play,
 	flush,
 	onpause,
-	onresume
+	onresume,
+	NULL
 };
 

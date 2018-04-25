@@ -44,5 +44,6 @@ struct sound_driver sound_null = {
 	play,
 	flush,
 	onpause,
-	onresume	
+	onresume,
+	NULL
 };

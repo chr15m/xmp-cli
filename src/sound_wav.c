@@ -173,6 +173,7 @@ struct sound_driver sound_wav = {
 	play,
 	flush,
 	onpause,
-	onresume
+	onresume,
+	NULL
 };
 

@@ -139,5 +139,6 @@ struct sound_driver sound_netbsd = {
 	play,
 	flush,
 	onpause,
-	onresume
+	onresume,
+	NULL
 };

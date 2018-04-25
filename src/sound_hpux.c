@@ -155,5 +155,6 @@ struct sound_driver sound_hpux = {
 	play,
 	flush,
 	onpause,
-	onresume
+	onresume,
+	NULL
 };

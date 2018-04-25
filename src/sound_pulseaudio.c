@@ -92,5 +92,6 @@ struct sound_driver sound_pulseaudio = {
 	play,
 	flush,
 	onpause,
-	onresume
+	onresume,
+	NULL
 };

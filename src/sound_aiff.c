@@ -161,5 +161,6 @@ struct sound_driver sound_aiff = {
 	play,
 	flush,
 	onpause,
-	onresume 
+	onresume,
+	NULL
 };

@@ -110,5 +110,6 @@ struct sound_driver sound_sndio = {
 	play,
 	flush,
 	onpause,
-	onresume
+	onresume,
+	NULL
 };

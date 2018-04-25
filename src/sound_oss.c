@@ -208,6 +208,7 @@ struct sound_driver sound_oss = {
 	play,
 	flush,
 	onpause,
-	onresume
+	onresume,
+	NULL
 };
 

@@ -105,6 +105,7 @@ struct sound_driver sound_file = {
 	play,
 	flush,
 	onpause,
-	onresume
+	onresume,
+	NULL
 };
 

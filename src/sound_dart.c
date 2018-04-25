@@ -233,6 +233,7 @@ struct sound_driver sound_os2dart = {
 	play,
 	flush,
 	onpause,
-	onresume
+	onresume,
+	NULL
 };
 

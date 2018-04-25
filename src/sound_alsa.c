@@ -12,6 +12,14 @@
 
 static snd_pcm_t *pcm_handle;
 
+static int get_delay(void)
+{
+	snd_pcm_status_t *pcm_status;
+	snd_pcm_status_alloca(&pcm_status);
+	snd_pcm_status(pcm_handle, pcm_status);
+	return snd_pcm_status_get_delay(pcm_status);
+}
+
 static int init(struct options *options)
 {
 	char **parm = options->driver_parm;
@@ -125,5 +133,6 @@ struct sound_driver sound_alsa = {
 	play,
 	flush,
 	onpause,
-	onresume	
+	onresume,
+	get_delay
 };

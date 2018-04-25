@@ -120,5 +120,6 @@ struct sound_driver sound_qnx = {
 	play,
 	flush,
 	onpause,
-	onresume
+	onresume,
+	NULL
 };

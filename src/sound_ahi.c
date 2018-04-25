@@ -146,6 +146,7 @@ struct sound_driver sound_ahi = {
 	play,
 	flush,
 	onpause,
-	onresume
+	onresume,
+	NULL
 };
 

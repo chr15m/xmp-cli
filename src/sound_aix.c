@@ -133,6 +133,7 @@ struct sound_driver sound_bsd = {
 	play,
 	flush,
 	onpause,
-	onresume
+	onresume,
+	NULL
 };
 

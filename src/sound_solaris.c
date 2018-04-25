@@ -186,6 +186,7 @@ struct sound_driver sound_solaris = {
 	play,
 	flush,
 	onpause,
-	onresume
+	onresume,
+	NULL
 };
 

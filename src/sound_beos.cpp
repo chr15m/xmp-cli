@@ -58,7 +58,8 @@ struct sound_driver sound_beos = {
 	play,
 	flush,
 	onpause,
-	onresume
+	onresume,
+	NULL
 };
 
 /* return minimum number of free bytes in buffer, value may change between

@@ -16,6 +16,7 @@ struct sound_driver {
         void (*flush)(void);
         void (*pause)(void);
         void (*resume)(void);
+        int (*get_delay)(void);
         struct list_head list;
 };
 

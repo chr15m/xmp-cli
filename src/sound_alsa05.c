@@ -42,6 +42,12 @@ static char *mybuffer = NULL;
 static char *mybuffer_nextfree = NULL;
 static char *card_name;
 
+static int get_delay() {
+	snd_pcm_status_t *pcm_status;
+	snd_pcm_status_alloca(&pcm_status); //Allocate space on the stack
+	snd_pcm_status(pcm_handle, pcm_status);
+	return snd_pcm_status_get_delay(pcm_status);
+}
 
 static int prepare_driver(void)
 {
@@ -209,6 +215,7 @@ struct sound_driver sound_alsa05 = {
 	dummy,			/* starttimer */
 	flush,			/* stoptimer */
 	bufdump,		/* bufdump */
-	NULL
+	NULL,
+	get_delay
 };
 

@@ -181,5 +181,6 @@ struct sound_driver sound_sgi = {
 	play,
 	flush,
 	onpause,
-	onresume
+	onresume,
+	NULL
 };
